@@ -55,11 +55,14 @@ We used our framework to evaluate two state-of-the-art saliency methods in co-sa
 
 We used the [Eval Co-SOD](https://github.com/zzhanghub/eval-co-sod) tool for evaluation.
 
-TODO
+Results from CoCA evaluation dataset.
 
-insert results for coca
+![CoCA_results](docs/images/coca_results.png)
 
-insert table with results for coca
+
+![CoCA_images](docs/images/coca_images.png)
+
+Comparison of predicted co-saliency maps for five methods.
 
 
 <!-- ### Contact -->
