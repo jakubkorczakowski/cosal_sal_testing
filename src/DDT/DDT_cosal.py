@@ -1,22 +1,16 @@
-import argparse
+import pathlib
+
+import cv2
+import densecrf
 import torch
 import torchvision.models as models
 import torchvision.transforms as transforms
-import torchvision.datasets as datasets
 from sklearn.decomposition import PCA
 import numpy as np
-from numpy import ndarray
 from skimage import measure
-import cv2
-from DDT.ImageSet import ImageSet
-import os.path as osp
-import os
-
 from PIL import Image
 
-import pathlib
-
-import densecrf
+from DDT.ImageSet import ImageSet
 
 
 class DDT(object):
@@ -94,9 +88,11 @@ class DDT(object):
             mask_3[mask_3[:, :, 2] > 254, 2] = 255
             mask_3 = np.array(mask_3, dtype=np.float32)
 
+            # apply dense CRF postprocessing
             file = pathlib.Path(testdir / test_dataset.get_file_name(index))
             cosal_map = densecrf.apply_crf(file, mask_3, savedir)
             
+            # merge saliency and co-location maps 
             sal_map = pathlib.Path(sal_dir / test_dataset.get_file_name(index)).with_suffix(".png")
             
             I  = Image.open(sal_map)
@@ -107,7 +103,8 @@ class DDT(object):
             res = np.multiply(Iq, cosal_map)
             res = Image.fromarray(res)
             res = res.convert('RGB')
-            
+
+            # save results to given output
             res.save(pathlib.Path(savedir / test_dataset.get_file_name(index)).with_suffix(".png"), 'PNG')            
             
 
