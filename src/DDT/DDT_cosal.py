@@ -9,21 +9,37 @@ from sklearn.decomposition import PCA
 import numpy as np
 from skimage import measure
 from PIL import Image
+from torchvision.models.feature_extraction import create_feature_extractor
 
 from DDT.ImageSet import ImageSet
 
+# nets to check:
+#   convnext_large
+#   convnext_base
+#   vit_b_16
+#   regnet_y_32gf
+#   EfficientNet-B7 efficientnet_b7
+# resnet152
+
 
 class DDT(object):
-    def __init__(self, use_cuda=False):
+    def __init__(self, feature_model, return_nodes, use_cuda=False):
         if not torch.cuda.is_available():
             self.use_cuda=False
         else:
             self.use_cuda=use_cuda
 
         if self.use_cuda:
-            self.pretrained_feature_model = (models.vgg19(pretrained=True).features).cuda()
+            # self.pretrained_feature_model = (models.vgg16(pretrained=True).features).cuda()
+            model = feature_model.cuda()
+            # self.pretrained_feature_model = (models.resnet50(pretrained=True).features).cuda()
+            self.pretrained_feature_model = create_feature_extractor(model, return_nodes=return_nodes)
         else:
-            self.pretrained_feature_model = models.vgg19(pretrained=True).features
+            # self.pretrained_feature_model = models.vgg16(pretrained=True).features
+            # self.pretrained_feature_model = models.resnet50(pretrained=True).features
+            model = feature_model
+            # self.pretrained_feature_model = (models.resnet50(pretrained=True).features).cuda()
+            self.pretrained_feature_model = create_feature_extractor(model, return_nodes=return_nodes)
 
         self.normalize = transforms.Normalize(
             mean=[0.485, 0.456, 0.406],
@@ -31,20 +47,27 @@ class DDT(object):
         )
         self.totensor = transforms.ToTensor()
 
-    def fit(self, traindir):
+    def fit(self, traindir, output_size):
         train_dataset = ImageSet(traindir, resize=1000)
 
-        descriptors = np.zeros((1, 512))
+        # descriptors = np.zeros((1, 512))
+        descriptors = np.zeros((1, output_size))
+
+        print(traindir)
 
         for index in range(len(train_dataset)):
+            # print(index)
             image = train_dataset[index]
             h, w = image.shape[:2]
             image = self.normalize(self.totensor(image)).view(1, 3, h, w)
             if self.use_cuda:
                 image=image.cuda()
 
-            output = self.pretrained_feature_model(image)[0, :]
-            output = output.view(512, output.shape[1] * output.shape[2])
+            # output = self.pretrained_feature_model(image)[0, :]
+            output = self.pretrained_feature_model(image)['features']
+            # print(output)
+            # output = output.view(512, output.shape[1] * output.shape[2])
+            output = output.view(output_size, output.shape[2] * output.shape[3])
             output = output.transpose(0, 1)
             descriptors = np.vstack((descriptors, output.detach().cpu().numpy().copy()))
             del output
@@ -69,9 +92,13 @@ class DDT(object):
             image = self.normalize(self.totensor(image)).view(1, 3, origin_height, origin_width)
             if self.use_cuda:
                 image = image.cuda()
-            featmap = self.pretrained_feature_model(image)[0, :]
-            h, w = featmap.shape[1], featmap.shape[2]
-            featmap = featmap.view(512, -1).transpose(0, 1)
+            # featmap = self.pretrained_feature_model(image)[0, :]
+            featmap = self.pretrained_feature_model(image)['features']
+            # h, w = featmap.shape[1], featmap.shape[2]
+            h, w = featmap.shape[2], featmap.shape[3]
+            # featmap = featmap.view(512, -1).transpose(0, 1)
+            featmap = featmap.view(featmap.shape[1], -1).transpose(0, 1)
+            # featmap -= descriptor_mean_tensor.repeat(featmap.shape[0], 1)
             featmap -= descriptor_mean_tensor.repeat(featmap.shape[0], 1)
             features = featmap.detach().cpu().numpy()
             del featmap
@@ -118,14 +145,16 @@ class DDT(object):
 
         labels = measure.label(highlight, connectivity=1, background=0)
         props = measure.regionprops(labels)
-        max_index = 0
-        for i in range(len(props)):
-            if props[i].area > props[max_index].area:
-                max_index = i
-        max_prop = props[max_index]
+        if props:
+            max_index = 0
+            for i in range(len(props)):
+                if props[i].area > props[max_index].area:
+                    max_index = i
+            max_prop = props[max_index]
         highlights_conn = np.zeros(highlight.shape)
-        for each in max_prop.coords:
-            highlights_conn[each[0]][each[1]] = 1
+        if props:
+            for each in max_prop.coords:
+                highlights_conn[each[0]][each[1]] = 1
 
         highlight_big = cv2.resize(
             highlights_conn,

@@ -8,4 +8,10 @@
 
 # CUDA_VISIBLE_DEVICES=2 python3 main.py --methods CoU2Net+COEGNET+GICD+GCoNet --datasets CoCA_beer_bottle+CoCA_high_heels+CoCA_chopsticks+CoCA_squirrel+CoCA_poker+CoCA_rabbit+CoCA_sunflower+CoCA_sticky_note+CoCA_glasses+CoCA_pigeon+CoCA_violin+CoCA_pine_cone+CoCA_helicopter+CoCA_hammock+CoCA_camera+CoCA_tablet+CoCA_backpack+CoCA_hammer+CoCA_potato+CoCA_UAV+CoCA_Accordion+CoCA_globe+CoCA_faucet+CoCA_pocket_watch+CoCA_microphone+CoCA_lollipop+CoCA_towel+CoCA_eggplant+CoCA_hourglass+CoCA_frisbee+CoCA_rocking_horse+CoCA_strawberry+CoCA_watermelon+CoCA_dumbbell+CoCA_handbag+CoCA_stool+CoCA_thermometer+CoCA_dolphin+CoCA_macaroon+CoCA_binoculars+CoCA_gift_box+CoCA_wheelchair+CoCA_teddy_bear+CoCA_toy_car+CoCA_persimmon+CoCA_stethoscope+CoCA_guitar+CoCA_dice+CoCA_roller-skating+CoCA_doughnut+CoCA_pineapple+CoCA_headphone+CoCA_baseball+CoCA_hat+CoCA_soap_bubble+CoCA_pumpkin+CoCA_fishing_rod+CoCA_belt+CoCA_moon+CoCA_harp+CoCA_Yellow_duck+CoCA_alarm_clock+CoCA_watering_can+CoCA_tomato+CoCA_minions+CoCA_calculator+CoCA_ice_cream+CoCA_rolling_pin+CoCA_avocado+CoCA_clover+CoCA_candle+CoCA_typewriter+CoCA_glove+CoCA_pillow+CoCA_whisk+CoCA_camel+CoCA_waffles+CoCA_boots+CoCA_butterfly+CoCA_key --save_dir ./Result_ldf --root_dir ../SalMaps_class_6
 
-CUDA_VISIBLE_DEVICES=2 python3 main.py --methods CoU2Net+CoLDF+COEGNET+GICD+GCONET --datasets CoCA+CoSOD3k+CoSal2015 --save_dir ./Result --root_dir /home/korczakowski/cosal_sal_testing/SalMaps
+# CUDA_VISIBLE_DEVICES=2 python3 main.py --methods CoU2Net+CoLDF+COEGNET+GICD+GCONET --datasets CoCA+CoSOD3k+CoSal2015 --save_dir ./Result --root_dir /home/korczakowski/cosal_sal_testing/SalMaps
+
+CUDA_VISIBLE_DEVICES=3 python3 main.py --methods regnet_x_32gf+resnet50+resnet152+vgg16+vgg19 --datasets CoSal2015 --save_dir ./Result --root_dir /home/korczakowski/cosal_sal_testing_local/SalMaps_fx_all_nets_cosal
+
+# CUDA_VISIBLE_DEVICES=2 python3 main.py --methods resnet50_23+resnet50_32+resnet50_35+resnet50_40+resnet50_41 --datasets CoCA --save_dir ./Result --root_dir /home/korczakowski/cosal_sal_testing_local/SalMaps_fx
+
+# CUDA_VISIBLE_DEVICES=2 python3 main.py --methods resnet50_12 --datasets CoCA --save_dir ./Result --root_dir /home/korczakowski/cosal_sal_testing_local/SalMaps_fx
