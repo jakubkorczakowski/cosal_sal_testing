@@ -1,0 +1,5 @@
+CoCA (vgg19_9): 0.1436 mae || 0.3955 max-fm || 0.3917 mean-fm || 0.6627 max-Emeasure || 0.6578 mean-Emeasure || 0.5794 S-measure || 0.3149 AP || 0.7323 AUC.
+CoCA (vgg19_18): 0.1487 mae || 0.3952 max-fm || 0.3909 mean-fm || 0.6658 max-Emeasure || 0.6569 mean-Emeasure || 0.5757 S-measure || 0.3179 AP || 0.7368 AUC.
+CoCA (vgg19_27): 0.1485 mae || 0.4118 max-fm || 0.4072 mean-fm || 0.6689 max-Emeasure || 0.6596 mean-Emeasure || 0.5894 S-measure || 0.3359 AP || 0.7565 AUC.
+CoCA (vgg19_31): 0.1343 mae || 0.4454 max-fm || 0.4426 mean-fm || 0.6824 max-Emeasure || 0.6771 mean-Emeasure || 0.6155 S-measure || 0.3673 AP || 0.7729 AUC.
+CoCA (vgg19_36): 0.1162 mae || 0.5054 max-fm || 0.5021 mean-fm || 0.7188 max-Emeasure || 0.7131 mean-Emeasure || 0.6568 S-measure || 0.4290 AP || 0.8154 AUC.
