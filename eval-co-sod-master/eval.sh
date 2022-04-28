@@ -10,8 +10,8 @@
 
 # CUDA_VISIBLE_DEVICES=2 python3 main.py --methods CoU2Net+CoLDF+COEGNET+GICD+GCONET --datasets CoCA+CoSOD3k+CoSal2015 --save_dir ./Result --root_dir /home/korczakowski/cosal_sal_testing/SalMaps
 
-CUDA_VISIBLE_DEVICES=3 python3 main.py --methods regnet_x_32gf+resnet50+resnet152+vgg16+vgg19 --datasets CoSal2015 --save_dir ./Result --root_dir /home/korczakowski/cosal_sal_testing_local/SalMaps_fx_all_nets_cosal
+# CUDA_VISIBLE_DEVICES=3 python3 main.py --methods regnet_x_32gf+resnet50+resnet152+vgg16+vgg19 --datasets CoSOD3k --save_dir ./Result_cosod3k_coldf --root_dir /home/korczakowski/cosal_sal_testing_local/SalMaps_fx_all_nets_cosod
 
-# CUDA_VISIBLE_DEVICES=2 python3 main.py --methods resnet50_23+resnet50_32+resnet50_35+resnet50_40+resnet50_41 --datasets CoCA --save_dir ./Result --root_dir /home/korczakowski/cosal_sal_testing_local/SalMaps_fx
+# CUDA_VISIBLE_DEVICES=2 python3 main.py --methods vgg19_9+vgg19_18+vgg19_27+vgg19_31+vgg19_9+ --datasets CoCA --save_dir ./Result --root_dir /home/korczakowski/cosal_sal_testing_local/SalMaps_fx_vgg
 
 # CUDA_VISIBLE_DEVICES=2 python3 main.py --methods resnet50_12 --datasets CoCA --save_dir ./Result --root_dir /home/korczakowski/cosal_sal_testing_local/SalMaps_fx

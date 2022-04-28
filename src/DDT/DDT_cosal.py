@@ -49,12 +49,8 @@ class DDT(object):
 
     def fit(self, traindir, output_size):
         train_dataset = ImageSet(traindir, resize=1000)
-
         # descriptors = np.zeros((1, 512))
         descriptors = np.zeros((1, output_size))
-
-        print(traindir)
-
         for index in range(len(train_dataset)):
             # print(index)
             image = train_dataset[index]
@@ -124,6 +120,9 @@ class DDT(object):
             
             I  = Image.open(sal_map)
             Iq = np.asarray(I)
+
+            if len(Iq.shape) > 2:
+                Iq = Iq[:, :, 0]
 
             Iq = cv2.resize(Iq, (cosal_map.shape[1], cosal_map.shape[0]), interpolation = cv2.INTER_AREA)
 

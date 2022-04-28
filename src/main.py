@@ -1,117 +1,10 @@
-from DDT.DDT_cosal import DDT
 import pathlib
 import argparse
 
 import torchvision.models as models
 
-# models_to_test = {
-    # "vgg16" : {
-    #     "model": models.vgg16(pretrained=True),
-    #     "return_nodes": {"features.30": "features"},
-    #     "output_size": 512
-    # },
-    # "vgg19" : {
-    #     "model": models.vgg19(pretrained=True),
-    #     "return_nodes": {"features.36": "features"},
-    #     "output_size": 512
-    # },
-    # "resnet50" : {
-    #     "model": models.resnet50(pretrained=True),
-    #     "return_nodes": {"layer4.2.relu_2": "features"},
-    #     "output_size": 2048
-    # },
-    # "resnet152" : {
-    #     "model": models.resnet152(pretrained=True),
-    #     "return_nodes": {"layer4.2.relu_2": "features"},
-    #     "output_size": 2048
-    # },
-    # "efficientnet_b7" : {
-    #     "model": models.efficientnet_b7(pretrained=True),
-    #     "return_nodes": {"features.8.2": "features"},
-    #     "output_size": 2560
-    # },
-    # "regnet_x_32gf" : {
-    #     "model": models.regnet_x_32gf(pretrained=True),
-    #     "return_nodes": {"trunk_output.block4.block4-0.activation": "features"},
-    #     "output_size": 2520
-    # },
-    # "convnext_base" : {
-    #     "model": models.convnext_base(pretrained=True),
-    #     "return_nodes": {"features.7.2.add": "features"},
-    #     "output_size": 1024
-    # },
-    # "convnext_large" : {
-    #     "model": models.convnext_large(pretrained=True),
-    #     "return_nodes": {"features.7.2.add": "features"},
-    #     "output_size": 1536
-    # }
-# }
-
-# models_to_test = {
-#     # "resnet50_41" : {
-#     #     "model": models.resnet50(pretrained=True),
-#     #     "return_nodes": {"layer4.1.relu_2": "features"},
-#     #     "output_size": 2048
-#     # },
-#     # "resnet50_40" : {
-#     #     "model": models.resnet50(pretrained=True),
-#     #     "return_nodes": {"layer4.0.relu_2": "features"},
-#     #     "output_size": 2048
-#     # },
-#     "resnet50_35" : {
-#         "model": models.resnet50(pretrained=True),
-#         "return_nodes": {"layer3.5.relu_2": "features"},
-#         "output_size": 1024
-#     },
-#     "resnet50_32" : {
-#         "model": models.resnet50(pretrained=True),
-#         "return_nodes": {"layer3.2.relu_2": "features"},
-#         "output_size": 1024
-#     },
-#     "resnet50_23" : {
-#         "model": models.resnet50(pretrained=True),
-#         "return_nodes": {"layer2.3.relu_2": "features"},
-#         "output_size": 512
-#     },
-#     "resnet50_12" : {
-#         "model": models.resnet50(pretrained=True),
-#         "return_nodes": {"layer1.2.relu_2": "features"},
-#         "output_size": 256
-#     },
-# }
-
-# models_to_test = {
-#     # "resnet50_41" : {
-#     #     "model": models.resnet50(pretrained=True),
-#     #     "return_nodes": {"layer4.1.relu_2": "features"},
-#     #     "output_size": 2048
-#     # },
-#     # "resnet50_40" : {
-#     #     "model": models.resnet50(pretrained=True),
-#     #     "return_nodes": {"layer4.0.relu_2": "features"},
-#     #     "output_size": 2048
-#     # },
-#     "resnet50_35" : {
-#         "model": models.resnet50(pretrained=True),
-#         "return_nodes": {"layer3.5.relu_2": "features"},
-#         "output_size": 1024
-#     },
-#     "resnet50_32" : {
-#         "model": models.resnet50(pretrained=True),
-#         "return_nodes": {"layer3.2.relu_2": "features"},
-#         "output_size": 1024
-#     },
-#     "resnet50_23" : {
-#         "model": models.resnet50(pretrained=True),
-#         "return_nodes": {"layer2.3.relu_2": "features"},
-#         "output_size": 512
-#     },
-#     "resnet50_12" : {
-#         "model": models.resnet50(pretrained=True),
-#         "return_nodes": {"layer1.2.relu_2": "features"},
-#         "output_size": 256
-#     },
-# }
+from DDT.DDT_cosal import DDT
+from utils.config import MODELS_TO_TEST
 
 
 def parse_args():
@@ -135,20 +28,25 @@ if __name__ == "__main__":
     args = parse_args()
     print_category_flag = False
 
-    for model_name, model_config in models_to_test.items():
+    for model_name, model_config in MODELS_TO_TEST.items():
         print(f'Processing {model_name}.')
         for dir in args.train_dir.iterdir():
-            if dir.is_dir():
-                if print_category_flag:
-                    print(f'Processing {dir.stem} category.')
-                ddt = DDT(model_config['model'], model_config['return_nodes'], use_cuda=True)
-                trans_vectors, descriptor_means = ddt.fit(dir, model_config['output_size'])
-                save_dir_dir = args.save_dir / model_name / args.sal_dir.stem / dir.stem
-                save_dir_dir.mkdir(exist_ok=True, parents=True)
-                ddt.co_locate(
-                    args.train_dir / dir.stem,
-                    save_dir_dir,
-                    args.sal_dir / dir.stem,
-                    trans_vectors,
-                    descriptor_means
-                )
+            try:
+                if dir.is_dir():
+                    if print_category_flag:
+                        print(f'Processing {dir.stem} category.')
+                    save_dir_dir = args.save_dir / model_name / args.sal_dir.stem / dir.stem
+                    if save_dir_dir.exists():
+                        continue
+                    save_dir_dir.mkdir(exist_ok=True, parents=True)
+                    ddt = DDT(model_config['model'], model_config['return_nodes'], use_cuda=True)
+                    trans_vectors, descriptor_means = ddt.fit(dir, model_config['output_size'])
+                    ddt.co_locate(
+                        args.train_dir / dir.stem,
+                        save_dir_dir,
+                        args.sal_dir / dir.stem,
+                        trans_vectors,
+                        descriptor_means
+                    )
+            except RuntimeError:
+                print(dir)
