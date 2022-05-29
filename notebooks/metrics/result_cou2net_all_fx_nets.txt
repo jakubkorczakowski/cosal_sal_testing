@@ -1,0 +1,15 @@
+CoCA (regnet_x_32gf): 0.1557 mae || 0.4061 max-fm || 0.4001 mean-fm || 0.6579 max-Emeasure || 0.6444 mean-Emeasure || 0.5950 S-measure || 0.3326 AP || 0.7913 AUC.
+CoCA (resnet50): 0.1530 mae || 0.4078 max-fm || 0.4011 mean-fm || 0.6618 max-Emeasure || 0.6488 mean-Emeasure || 0.5928 S-measure || 0.3346 AP || 0.7865 AUC.
+CoCA (resnet152): 0.1549 mae || 0.4138 max-fm || 0.4075 mean-fm || 0.6607 max-Emeasure || 0.6428 mean-Emeasure || 0.6015 S-measure || 0.3482 AP || 0.8070 AUC.
+CoCA (vgg16): 0.1275 mae || 0.4667 max-fm || 0.4619 mean-fm || 0.6991 max-Emeasure || 0.6898 mean-Emeasure || 0.6332 S-measure || 0.3887 AP || 0.8103 AUC.
+CoCA (vgg19): 0.1211 mae || 0.4838 max-fm || 0.4790 mean-fm || 0.7039 max-Emeasure || 0.6955 mean-Emeasure || 0.6466 S-measure || 0.4083 AP || 0.8239 AUC.
+CoSOD3k (regnet_x_32gf): 0.1191 mae || 0.6914 max-fm || 0.6829 mean-fm || 0.7788 max-Emeasure || 0.7700 mean-Emeasure || 0.7334 S-measure || 0.6352 AP || 0.8525 AUC.
+CoSOD3k (resnet50): 0.1226 mae || 0.6809 max-fm || 0.6722 mean-fm || 0.7674 max-Emeasure || 0.7584 mean-Emeasure || 0.7200 S-measure || 0.6223 AP || 0.8400 AUC.
+CoSOD3k (resnet152): 0.1163 mae || 0.6982 max-fm || 0.6890 mean-fm || 0.7822 max-Emeasure || 0.7743 mean-Emeasure || 0.7411 S-measure || 0.6501 AP || 0.8647 AUC.
+CoSOD3k (vgg16): 0.1040 mae || 0.7073 max-fm || 0.6994 mean-fm || 0.7889 max-Emeasure || 0.7774 mean-Emeasure || 0.7388 S-measure || 0.6455 AP || 0.8441 AUC.
+CoSOD3k (vgg19): 0.0994 mae || 0.7192 max-fm || 0.7112 mean-fm || 0.7977 max-Emeasure || 0.7862 mean-Emeasure || 0.7483 S-measure || 0.6593 AP || 0.8527 AUC.
+CoSal2015 (regnet_x_32gf): 0.1205 mae || 0.7588 max-fm || 0.7483 mean-fm || 0.8068 max-Emeasure || 0.8000 mean-Emeasure || 0.7683 S-measure || 0.7057 AP || 0.8640 AUC.
+CoSal2015 (resnet50): 0.1274 mae || 0.7396 max-fm || 0.7292 mean-fm || 0.7907 max-Emeasure || 0.7833 mean-Emeasure || 0.7492 S-measure || 0.6842 AP || 0.8483 AUC.
+CoSal2015 (resnet152): 0.1142 mae || 0.7685 max-fm || 0.7572 mean-fm || 0.8157 max-Emeasure || 0.8088 mean-Emeasure || 0.7802 S-measure || 0.7282 AP || 0.8807 AUC.
+CoSal2015 (vgg16): 0.1065 mae || 0.7778 max-fm || 0.7691 mean-fm || 0.8232 max-Emeasure || 0.8128 mean-Emeasure || 0.7814 S-measure || 0.7318 AP || 0.8683 AUC.
+CoSal2015 (vgg19): 0.1022 mae || 0.7848 max-fm || 0.7760 mean-fm || 0.8314 max-Emeasure || 0.8206 mean-Emeasure || 0.7898 S-measure || 0.7418 AP || 0.8758 AUC.

@@ -1,0 +1,15 @@
+CoCA (CoU2Net): 0.1229 mae || 0.4786 max-fm || 0.4727 mean-fm || 0.7064 max-Emeasure || 0.6944 mean-Emeasure || 0.6432 S-measure || 0.4049 AP || 0.8253 AUC.
+CoCA (CoLDF): 0.1162 mae || 0.5054 max-fm || 0.5022 mean-fm || 0.7188 max-Emeasure || 0.7131 mean-Emeasure || 0.6568 S-measure || 0.4290 AP || 0.8154 AUC.
+CoCA (COEGNET): 0.1062 mae || 0.4930 max-fm || 0.4495 mean-fm || 0.7171 max-Emeasure || 0.6788 mean-Emeasure || 0.6119 S-measure || 0.3593 AP || 0.7389 AUC.
+CoCA (GICD): 0.1260 mae || 0.5126 max-fm || 0.5044 mean-fm || 0.7149 max-Emeasure || 0.7010 mean-Emeasure || 0.6579 S-measure || 0.4296 AP || 0.8094 AUC.
+CoCA (GCONET): 0.1050 mae || 0.5438 max-fm || 0.5313 mean-fm || 0.7598 max-Emeasure || 0.7393 mean-Emeasure || 0.6729 S-measure || 0.4554 AP || 0.8234 AUC.
+CoSOD3k (CoU2Net): 0.1017 mae || 0.7072 max-fm || 0.6989 mean-fm || 0.7944 max-Emeasure || 0.7833 mean-Emeasure || 0.7431 S-measure || 0.6558 AP || 0.8578 AUC.
+CoSOD3k (CoLDF): 0.0940 mae || 0.7384 max-fm || 0.7341 mean-fm || 0.8084 max-Emeasure || 0.8010 mean-Emeasure || 0.7593 S-measure || 0.6814 AP || 0.8544 AUC.
+CoSOD3k (COEGNET): 0.0839 mae || 0.7577 max-fm || 0.7484 mean-fm || 0.8379 max-Emeasure || 0.8166 mean-Emeasure || 0.7780 S-measure || 0.7058 AP || 0.8664 AUC.
+CoSOD3k (GICD): 0.0794 mae || 0.7698 max-fm || 0.7628 mean-fm || 0.8478 max-Emeasure || 0.8446 mean-Emeasure || 0.7969 S-measure || 0.7119 AP || 0.8831 AUC.
+CoSOD3k (GCONET): 0.0712 mae || 0.7771 max-fm || 0.7699 mean-fm || 0.8601 max-Emeasure || 0.8568 mean-Emeasure || 0.8018 S-measure || 0.7218 AP || 0.8890 AUC.
+CoSal2015 (CoU2Net): 0.1042 mae || 0.7739 max-fm || 0.7642 mean-fm || 0.8285 max-Emeasure || 0.8177 mean-Emeasure || 0.7841 S-measure || 0.7397 AP || 0.8803 AUC.
+CoSal2015 (CoLDF): 0.0954 mae || 0.8056 max-fm || 0.8007 mean-fm || 0.8415 max-Emeasure || 0.8350 mean-Emeasure || 0.8009 S-measure || 0.7600 AP || 0.8757 AUC.
+CoSal2015 (COEGNET): 0.0777 mae || 0.8358 max-fm || 0.8273 mean-fm || 0.8841 max-Emeasure || 0.8675 mean-Emeasure || 0.8384 S-measure || 0.8276 AP || 0.9237 AUC.
+CoSal2015 (GICD): 0.0707 mae || 0.8441 max-fm || 0.8351 mean-fm || 0.8865 max-Emeasure || 0.8826 mean-Emeasure || 0.8437 S-measure || 0.8050 AP || 0.9109 AUC.
+CoSal2015 (GCONET): 0.0681 mae || 0.8471 max-fm || 0.8376 mean-fm || 0.8874 max-Emeasure || 0.8836 mean-Emeasure || 0.8453 S-measure || 0.8155 AP || 0.9171 AUC.

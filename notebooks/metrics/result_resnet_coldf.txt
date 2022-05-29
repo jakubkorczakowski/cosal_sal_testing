@@ -1,0 +1,7 @@
+CoCA (resnet50_12): 0.1441 mae || 0.3750 max-fm || 0.3718 mean-fm || 0.6512 max-Emeasure || 0.6475 mean-Emeasure || 0.5769 S-measure || 0.2948 AP || 0.7250 AUC.
+CoCA (resnet50_23): 0.1501 mae || 0.4125 max-fm || 0.4070 mean-fm || 0.6786 max-Emeasure || 0.6659 mean-Emeasure || 0.5879 S-measure || 0.3368 AP || 0.7636 AUC.
+CoCA (resnet50_32): 0.1521 mae || 0.3723 max-fm || 0.3680 mean-fm || 0.6411 max-Emeasure || 0.6285 mean-Emeasure || 0.5737 S-measure || 0.3085 AP || 0.7460 AUC.
+CoCA (resnet50_35): 0.1477 mae || 0.3278 max-fm || 0.3255 mean-fm || 0.5918 max-Emeasure || 0.5881 mean-Emeasure || 0.5593 S-measure || 0.2569 AP || 0.7056 AUC.
+CoCA (resnet50_40): 0.1322 mae || 0.2695 max-fm || 0.2679 mean-fm || 0.5856 max-Emeasure || 0.5704 mean-Emeasure || 0.5250 S-measure || 0.2074 AP || 0.6470 AUC.
+CoCA (resnet50_41): 0.1330 mae || 0.3651 max-fm || 0.3624 mean-fm || 0.6365 max-Emeasure || 0.6333 mean-Emeasure || 0.5747 S-measure || 0.2904 AP || 0.7242 AUC.
+
