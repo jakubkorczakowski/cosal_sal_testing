@@ -12,7 +12,7 @@
 
 ## Description
 
-TODO
+In this paper, we propose a framework for the detection of object co-saliency, which is a modification of the CoEGNet method. The proposed approach works on an achieved saliency mask from a saliency detector and tries to indicate saliency objects which coexist in a group of images. As part of our framework, two novel methods for co-salient object detection have been proposed (CoU2Net and CoLDF). Both methods in one branch use algorithms for image saliency object detection, meanwhile second branch is responsible for repetitive object detection, based on feature vector extractor (VGG-19), and the DDT method is improved by using Conditional Random Fields. The proposed architectures are tested based on U2NET and label decoupling framework (LDF) called in this paper CoU2Net and CoLDF, respectively. Two saliency detectors used in our proposed methods are one of the best solutions in this field. The proposed solutions were tested on three datasets: CoCA, CoSal2015, and CoSOD3k, and compared with some of the best algorithms in co-silent object detection: GICD and CoEGNet. The advantages and disadvantages of the proposed method are highlighted and discussed.
 
 ## Usage
 ### Requirements
